@@ -158,5 +158,14 @@ namespace BrandingNS
       StoreBrand.DeleteRelationship(store.GetId(), test.GetId());
       Assert.Equal(0, test.GetStores().Count);
     }
+    [Fact]
+    public void StoreGetsBrandsItDoesntCarry()
+    {
+      Brand test = new Brand("test");
+      test.Save();
+      Store store = new Store("test");
+      store.Save();
+      Assert.Equal(1, store.GetBrandsNotInStore().Count);
+    }
   }
 }
