@@ -1,0 +1,37 @@
+Directive
+SQL:
+stores - id, name
+brand - id, name
+store_brand - id, store_id, brand_id 
+
+Classes
+Store - CRUD itself. R brand, C store_brand
+Brand - CRUD itself, R store
+StoreBrand - D itself, contain table information
+
+Tests: In the order they should be written
+Store:
+Knows its name
+GetsAll from database, and it starts at 0
+Saves to database
+Deletes All from database
+Deletes single from database 
+Updates database 
+
+Brand:
+Knows its name
+GetsAll from database, and it starts at 0
+Saves to database
+Deletes All from database
+Deletes single from database 
+Updates database 
+
+Store:
+Create rows in the relationship table 
+Reads brands its associated with
+
+Brand:
+Read stores its associated with 
+
+StoreBrand:
+Deletes relationship rows
