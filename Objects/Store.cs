@@ -42,6 +42,16 @@ namespace BrandingNS.Objects
       }
     }
   
+    public void AddBrand(Brand brand)
+    {
+      AddBrand(brand.GetId());
+    }
+    public List<Brand> GetBrands()
+    {
+      string query = "JOIN "+ StoreBrand.Table + " ON (" +StoreBrand.BrandIdColumn + " = " +Brand.Table + ".id) WHERE "+StoreBrand.Table+"."+StoreBrand.StoreIdColumn+" = @id";
+      SqlParameter parameter = new SqlParameter("@id", GetId());
+      return base.GetList(Brand.Table, query, Brand.MakeObject, parameter).Cast<Brand>().ToList();
+    }
     public void AddBrand(int brandId)
     {
       base.Save(StoreBrand.Table, StoreBrand.Columns, StoreBrand.MakeParameters(GetId(), brandId));
