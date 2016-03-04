@@ -30,7 +30,7 @@ namespace BrandingNS
       };
       Get["/store/{sid}/addBrand/{bid}/"] = x => {
         Store store = Store.Find(int.Parse(x.sid));
-        store.AddBrand(int.Parse(x.bid));
+        store.AddBrand(int.Parse(x.bid)); 
         return View["forward.cshtml", "/store/"+x.sid];
       };
       Get["/brand/{bid}/addStore/{sid}/"] = x => {
