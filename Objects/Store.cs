@@ -54,6 +54,19 @@ namespace BrandingNS.Objects
     {
       DBHandler.DeleteAll(Table);
     }
+    
+    public override bool Equals(System.Object other)
+    {
+      if(!(other is Store))
+      {
+        return false;
+      } else {
+        Store test = (Store) other;
+        bool idMatch = test.GetId() == this.GetId();
+        bool nameMatch = test.GetName() == this.GetName();
+        return( idMatch && nameMatch );
+      }
+    }
     public static Object MakeObject(SqlDataReader rdr)
     {
       return new Store(rdr.GetString(1), rdr.GetInt32(0));
