@@ -61,5 +61,12 @@ namespace BrandingNS
       test.Save();
       Assert.Equal("test2", test.GetName());
     }
+    [Fact]
+    public void StoreFindsSingleRow()
+    {
+      Store test =new Store("test");
+      test.Save();
+      Assert.Equal(test, Store.Find(test.GetId()));
+    }
   }
 }
