@@ -47,6 +47,27 @@ namespace BrandingNS.Objects
       SqlParameter parameter = new SqlParameter("@id", GetId());
       return base.GetList(Store.Table, query, Store.MakeObject, parameter).Cast<Store>().ToList();
     }
+    public List<Store> GetStoresNotInBrand()
+    {
+      List<Store> inBrand = this.GetStores();
+      List<Store> allStores = Store.GetAll();
+      List<Store> output = new List<Store>(){};
+      foreach(Store store in allStores)
+      {
+        bool addBool = true;
+        foreach(Store storeInBrand in inBrand)
+        {
+          if(store.Equals(storeInBrand))
+          {
+            addBool = false;
+            break;
+          }
+        }
+        if(addBool)
+          output.Add(store);
+      }
+      return output;
+    }
     public static Brand Find(int id)
     {
       return (Brand) DBHandler.GetObjectFromDB(Table, "WHERE id = @id", MakeObject, new SqlParameter("@id", id));
