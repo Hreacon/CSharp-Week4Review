@@ -34,6 +34,13 @@ namespace BrandingNS.Objects
            }, 
          GetId() ));
     }
+    public void Delete()
+    {
+      if( GetId() > 0 ) // make sure saved to database first
+      {
+        DBHandler.Delete(Table, GetId());
+      }
+    }
     
     public static List<Store> GetAll()
     {
