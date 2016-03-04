@@ -25,6 +25,16 @@ namespace BrandingNS.Objects
     public void SetName(string name) { _name = name; }
     public void SetId(int id) { _id = id; }
     
+    public void Save()
+    {
+      SetId(base.Save(Table,
+         new List<string> { NameColumn }, 
+         new List<SqlParameter> { 
+           new SqlParameter("@"+NameColumn, GetName())
+           }, 
+         GetId() ));
+    }
+    
     public static List<Store> GetAll()
     {
       return DBHandler.GetAll(Table, MakeObject).Cast<Store>().ToList();
