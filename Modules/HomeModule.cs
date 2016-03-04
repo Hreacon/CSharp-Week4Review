@@ -8,7 +8,10 @@ namespace BrandingNS
     public HomeModule()
     {
       Get["/"] = _ => {
-        return View["index.cshtml"];
+        Dictionary<string, object> model = new Dictionary<string, object>{};
+        model.Add("stores", Store.GetAll());
+        model.Add("brands", Brand.GetAll());
+        return View["index.cshtml", model];
       };
       Get["/store/{sid}/"] = x => {
         return View["viewStore.cshtml", Store.Find(int.Parse(x.sid))];
@@ -30,7 +33,7 @@ namespace BrandingNS
       };
       Get["/store/{sid}/addBrand/{bid}/"] = x => {
         Store store = Store.Find(int.Parse(x.sid));
-        store.AddBrand(int.Parse(x.bid)); 
+        store.AddBrand(int.Parse(x.bid));
         return View["forward.cshtml", "/store/"+x.sid];
       };
       Get["/brand/{bid}/addStore/{sid}/"] = x => {
@@ -47,12 +50,12 @@ namespace BrandingNS
         return View["forward.cshtml", "/brand/"+x.bid];
       };
       Post["/store/add/"] = _ => {
-        string name = Request.Form["name"];
+        string name = Request.Form["storeName"];
         new Store(name).Save();
         return View["forward.cshtml", "/"];
       };
       Post["/brand/add/"] = _ => {
-        string name = Request.Form["name"];
+        string name = Request.Form["brandName"];
         new Brand(name).Save();
         return View["forward.cshtml", "/"];
       };
