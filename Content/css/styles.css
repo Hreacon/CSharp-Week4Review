@@ -32,3 +32,9 @@ input {
   color:white;
   background: black;
 }
+
+.index .stores, .index .brands {
+  text-align: center;
+  width:49%;
+  display:inline-block;
+}
