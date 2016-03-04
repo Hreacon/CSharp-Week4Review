@@ -64,7 +64,7 @@ namespace BrandingNS.Objects
         {
           if(brand.Equals(storeBrand))
           {
-            addbool = false;
+            addBool = false;
             break;
           }
         }
