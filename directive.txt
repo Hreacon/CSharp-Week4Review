@@ -43,8 +43,10 @@ Routes:
 /store/id/ - display a single store. List Brands. Link to add a brand.
 /store/id/brands/ - list all brands not already in store. Click on one to add to store.
 /store/id/addBrand/id/ - add a brand to a store. Show /store/id/
+/store/id/brand/id/deleteRelationship/ - Delete the relationship between the store and brand. View /store/id 
 /brand/id/ - display a single brand. List stores associated. Link to add a store.
 /brand/id/stores/ - list stores not carrying the current brand.
 /brand/id/addStore/id/ - add a brand to a store. Show /brand/id/
+/brand/id/store/id/deleteRelationship/ - Delete the relationship between the store and brand. View /brand/id
 /store/add/ - add a store to the database. Show /
 /brand/add/ - add a brand to the database. Show / 
