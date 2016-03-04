@@ -167,5 +167,15 @@ namespace BrandingNS
       store.Save();
       Assert.Equal(1, store.GetBrandsNotInStore().Count);
     }
+    
+    [Fact]
+    public void BrandGetsStoresThatDontCarryIt()
+    {
+      Brand test = new Brand("test");
+      test.Save();
+      Store store = new Store("test");
+      store.Save();
+      Assert.Equal(1, test.GetStoresNotInBrand().Count);
+    }
   }
 }
