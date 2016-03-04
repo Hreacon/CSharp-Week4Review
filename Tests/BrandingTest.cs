@@ -15,7 +15,7 @@ namespace BrandingNS
     }
     public void Dispose()
     {
-      //  Store.DeleteAll();
+       Store.DeleteAll();
     }
     
     [Fact]
@@ -50,6 +50,16 @@ namespace BrandingNS
       Assert.Equal(1,Store.GetAll().Count);
       test.Delete();
       Assert.Equal(0,Store.GetAll().Count);
+    }
+    [Fact]
+    public void StoreUpdatesDatabase()
+    {
+      Store test = new Store("test");
+      test.Save();
+      Assert.Equal("test", test.GetName());
+      test.SetName("test2");
+      test.Save();
+      Assert.Equal("test2", test.GetName());
     }
   }
 }
