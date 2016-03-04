@@ -3,6 +3,7 @@ using System;
 using System.Data;
 using System.Data.SqlClient;
 using JensenNS.Objects;
+using System.Linq;
 
 namespace BrandingNS.Objects
 {
@@ -24,6 +25,15 @@ namespace BrandingNS.Objects
     public void SetName(string name) { _name = name; }
     public void SetId(int id) { _id = id; }
     
+    public static List<Store> GetAll()
+    {
+      return DBHandler.GetAll(Table, MakeObject).Cast<Store>().ToList();
+    }
+    
+    public static Object MakeObject(SqlDataReader rdr)
+    {
+      return new Store(rdr.GetString(1), rdr.GetInt32(0));
+    }
     
   } // end class
 } // end namespace
