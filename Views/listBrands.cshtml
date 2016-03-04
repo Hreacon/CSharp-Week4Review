@@ -1,0 +1,14 @@
+<div class="brands">
+<h2>Brands:</h2>
+  @if(Model["brands"].Count > 0)
+  {
+    <ul>
+      @foreach(var brand in Model["brands"])
+      {
+        <li>@brand.GetName()</li>
+      }
+    </ul>
+  } else {
+    <h3>No Brands Listed</h3>
+  }
+</div>

@@ -1,0 +1,36 @@
+@Html.Partial("header.cshtml")
+
+<div class="index">
+<div class="stores">
+<h2>Stores:</h2>
+  @if(Model["stores"].Count > 0)
+  {
+    <ul>
+      @foreach(var store in Model["stores"])
+      {
+        <li><a href="/store/@store.GetId()">@store.GetName()</a></li>
+      }
+    </ul>
+  } else {
+    <h3>No Stores Listed</h3>
+  }
+</div>
+
+
+<div class="brands">
+<h2>Brands:</h2>
+  @if(Model["brands"].Count > 0)
+  {
+    <ul>
+      @foreach(var brand in Model["brands"])
+      {
+        <li><a href="/brand/@brand.GetId()">@brand.GetName()</a></li>
+      }
+    </ul>
+  } else {
+    <h3>No Brands Listed</h3>
+  }
+</div>
+@Html.Partial("formAddStore.cshtml")
+@Html.Partial("formAddBrand.cshtml")
+</div>

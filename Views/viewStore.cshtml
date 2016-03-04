@@ -1,0 +1,23 @@
+@Html.Partial("header.cshtml")
+<h2>@Model.GetName()</h2>
+
+<div class="brands">
+<h2>Brands we carry:</h2>
+  @if(Model.GetBrands().Count > 0)
+  {
+    <ul>
+      @foreach(var brand in Model.GetBrands())
+      {
+        <li>@brand.GetName()</li>
+        <ul>
+          <li><a href="/store/@Model.GetId()/brand/@brand.GetId()/deleteRelationShip">Remove Brand</a></li>
+        </ul>
+      }
+    </ul>
+  } else {
+    <h3>No Brands Listed</h3>
+  }
+</div>
+
+<a href="/store/@Model.GetId()/brands/" class="link">Add Brand</a>
+<a href="/" class="link">Return Home</a>
