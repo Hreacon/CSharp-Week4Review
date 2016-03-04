@@ -10,6 +10,20 @@ _{This is a detailed description of your application. Its purpose and usage.  Gi
 
 ## Setup/Installation Requirements
 
+### SQL
+create database shoe_stores
+create database shoe_stores_test
+go
+use shoe_stores
+create table stores(id int identity(1,1), name varchar(255))
+create table brands(id int identity(1,1), name varchar(255))
+create table store_brand(id int identity(1,1), store_id int, brand_id int)
+use shoe_stores_test
+create table stores(id int identity(1,1), name varchar(255))
+create table brands(id int identity(1,1), name varchar(255))
+create table store_brand(id int identity(1,1), store_id int, brand_id int)
+go
+
 * _This is a great place_
 * _to list setup instructions_
 * _in a simple_
