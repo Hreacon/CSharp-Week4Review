@@ -11,7 +11,7 @@ namespace BrandingNS.Objects
   {
     private int _id;
     private string _name;
-    public static string Table = "Brands";
+    public static string Table = "brands";
     public static string NameColumn = "name";
     
     public Brand(string name, int id = 0)

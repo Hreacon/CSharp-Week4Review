@@ -121,7 +121,7 @@ namespace BrandingNS
       Assert.Equal(test, Brand.Find(test.GetId()));
     }
     [Fact]
-    public void StoreGetsBrands()
+    public void StoreGetsBrands() 
     {
       Store test = new Store("test");
       Assert.Equal(0, test.GetBrands().Count);
