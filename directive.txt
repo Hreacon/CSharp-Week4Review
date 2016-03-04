@@ -17,6 +17,7 @@ Saves to database
 Deletes All from database
 Deletes single from database 
 Updates database 
+Reads Single row from database
 
 Brand:
 Knows its name
@@ -25,6 +26,7 @@ Saves to database
 Deletes All from database
 Deletes single from database 
 Updates database 
+Reads Single row from database
 
 Store:
 Create rows in the relationship table 

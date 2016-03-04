@@ -42,5 +42,14 @@ namespace BrandingNS
       Store.DeleteAll();
       Assert.Equal(0,Store.GetAll().Count);
     }
+    [Fact]
+    public void StoreDeletesSingleFromDatabase()
+    {
+      Store test = new Store("test");
+      test.Save();
+      Assert.Equal(1,Store.GetAll().Count);
+      test.Delete();
+      Assert.Equal(0,Store.GetAll().Count);
+    }
   }
 }
