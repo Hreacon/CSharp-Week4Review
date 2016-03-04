@@ -42,6 +42,10 @@ namespace BrandingNS.Objects
       }
     }
     
+    public static Store Find(int id)
+    {
+      return (Store) DBHandler.GetObjectFromDB(Table, "WHERE id = @id", MakeObject, new SqlParameter("@id", id));
+    }
     public static List<Store> GetAll()
     {
       return DBHandler.GetAll(Table, MakeObject).Cast<Store>().ToList();
