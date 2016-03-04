@@ -16,6 +16,7 @@ namespace BrandingNS
     public void Dispose()
     {
        Store.DeleteAll();
+       Brand.DeleteAll();
     }
     
     [Fact]
@@ -67,6 +68,57 @@ namespace BrandingNS
       Store test =new Store("test");
       test.Save();
       Assert.Equal(test, Store.Find(test.GetId()));
+    }
+    
+    [Fact]
+    public void BrandKnowsItsName()
+    {
+      Brand test = new Brand("Name");
+      Assert.Equal("Name", test.GetName());
+    }
+    [Fact]
+    public void BrandGetsAllFromDatabaseAndIsEmpty()
+    {
+      Assert.Equal(0,Brand.GetAll().Count);
+    }
+    [Fact]
+    public void BrandSavesToDatabase()
+    {
+      new Brand("test").Save();
+      Assert.Equal(1, Brand.GetAll().Count);
+    }
+    [Fact]
+    public void BrandDeletesAllFromDatabase()
+    {
+      new Brand("test").Save();
+      Brand.DeleteAll();
+      Assert.Equal(0,Brand.GetAll().Count);
+    }
+    [Fact]
+    public void BrandDeletesSingleFromDatabase()
+    {
+      Brand test = new Brand("test");
+      test.Save();
+      Assert.Equal(1,Brand.GetAll().Count);
+      test.Delete();
+      Assert.Equal(0,Brand.GetAll().Count);
+    }
+    [Fact]
+    public void BrandUpdatesDatabase()
+    {
+      Brand test = new Brand("test");
+      test.Save();
+      Assert.Equal("test", test.GetName());
+      test.SetName("test2");
+      test.Save();
+      Assert.Equal("test2", test.GetName());
+    }
+    [Fact]
+    public void BrandFindsSingleRow()
+    {
+      Brand test =new Brand("test");
+      test.Save();
+      Assert.Equal(test, Brand.Find(test.GetId()));
     }
   }
 }
