@@ -21,14 +21,16 @@ namespace BrandingNS
       };
       Get["/store/{sid}/brands/"] = x => {
         Dictionary<string, object> model = new Dictionary<string, object>{};
-        model.Add("store", Store.Find(int.Parse(x.sid)));
-        model.Add("brands", Brand.GetAll());
+        Store store = Store.Find(int.Parse(x.sid));
+        model.Add("store", store);
+        model.Add("brands", store.GetBrandsNotInStore());
         return View["viewStoreListBrands.cshtml", model];
       };
       Get["/brand/{bid}/stores/"] = x => {
         Dictionary<string, object> model = new Dictionary<string, object>{};
-        model.Add("brand", Brand.Find(int.Parse(x.bid)));
-        model.Add("stores", Store.GetAll());
+        Brand brand = Brand.Find(int.Parse(x.bid));
+        model.Add("brand", brand);
+        model.Add("stores", brand.GetStoresNotInBrand());
         return View["viewBrandListStores.cshtml", model];
       };
       Get["/store/{sid}/addBrand/{bid}/"] = x => {
