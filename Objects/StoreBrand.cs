@@ -1,9 +1,10 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using JensenNS.Objects;
 
 namespace BrandingNS.Objects
 {
-  public class StoreBrand
+  public class StoreBrand : DBHandler
   {
     public static string Table = "store_brand";
     public static string StoreIdColumn = "store_id";
@@ -16,6 +17,13 @@ namespace BrandingNS.Objects
         new SqlParameter("@"+StoreIdColumn, store),
         new SqlParameter("@"+BrandIdColumn, brand)
       };
+    }
+    
+    public static void DeleteRelationship(int store, int brand)
+    {
+      string query = "DELETE FROM " + Table + " WHERE " + StoreIdColumn + " = @"+StoreIdColumn+" AND " + BrandIdColumn + " = @"+BrandIdColumn;
+      
+      DBHandler.DatabaseOperation(query, MakeParameters(store, brand) );
     }
   }
 }
