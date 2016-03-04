@@ -29,5 +29,11 @@ namespace BrandingNS
     {
       Assert.Equal(0,Store.GetAll().Count);
     }
+    [Fact]
+    public void StoreSavesToDatabase()
+    {
+      new Store("test").Save();
+      Assert.Equal(1, Store.GetAll().Count);
+    }
   }
 }
