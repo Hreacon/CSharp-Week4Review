@@ -142,6 +142,7 @@ namespace BrandingNS
       Brand test = new Brand("test");
       test.Save();
       Store store = new Store("test");
+      store.Save();
       store.AddBrand(test);
       Assert.Equal(1, test.GetStores().Count);
     }
