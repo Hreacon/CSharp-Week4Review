@@ -13,25 +13,25 @@ namespace BrandingNS.Objects
     private string _name;
     public static string Table = "stores";
     public static string NameColumn = "name";
-    
+
     public Store(string name, int id = 0)
     {
       _id = id;
       _name = name;
     }
-    
+
     public int GetId() { return _id; }
     public string GetName() { return _name; }
     public void SetName(string name) { _name = name; }
     public void SetId(int id) { _id = id; }
-    
+
     public void Save()
     {
       SetId(base.Save(Table,
-         new List<string> { NameColumn }, 
-         new List<SqlParameter> { 
+         new List<string> { NameColumn },
+         new List<SqlParameter> {
            new SqlParameter("@"+NameColumn, GetName())
-           }, 
+           },
          GetId() ));
     }
     public void Delete()
@@ -41,7 +41,7 @@ namespace BrandingNS.Objects
         DBHandler.Delete(Table, GetId());
       }
     }
-  
+
     public void AddBrand(Brand brand)
     {
       AddBrand(brand.GetId());
@@ -52,10 +52,31 @@ namespace BrandingNS.Objects
       SqlParameter parameter = new SqlParameter("@id", GetId());
       return base.GetList(Brand.Table, query, Brand.MakeObject, parameter).Cast<Brand>().ToList();
     }
+    public List<Brand> GetBrandsNotInStore()
+    {
+      List<Brand> inStore = this.GetBrands();
+      List<Brand> allBrands = Brand.GetAll();
+      List<Brand> output = new List<Brand>(){};
+      foreach(Brand brand in allBrands)
+      {
+        bool addBool = true;
+        foreach(Brand storeBrand in inStore)
+        {
+          if(brand.Equals(storeBrand))
+          {
+            addbool = false;
+            break;
+          }
+        }
+        if(addBool)
+          output.Add(brand);
+      }
+      return output;
+    }
     public void AddBrand(int brandId)
     {
       base.Save(StoreBrand.Table, StoreBrand.Columns, StoreBrand.MakeParameters(GetId(), brandId));
-    }    
+    }
     public static Store Find(int id)
     {
       return (Store) DBHandler.GetObjectFromDB(Table, "WHERE id = @id", MakeObject, new SqlParameter("@id", id));
@@ -68,7 +89,7 @@ namespace BrandingNS.Objects
     {
       DBHandler.DeleteAll(Table);
     }
-    
+
     public override bool Equals(System.Object other)
     {
       if(!(other is Store))
@@ -85,6 +106,6 @@ namespace BrandingNS.Objects
     {
       return new Store(rdr.GetString(1), rdr.GetInt32(0));
     }
-    
+
   } // end class
 } // end namespace
