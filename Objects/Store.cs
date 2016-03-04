@@ -39,7 +39,10 @@ namespace BrandingNS.Objects
     {
       return DBHandler.GetAll(Table, MakeObject).Cast<Store>().ToList();
     }
-    
+    public static void DeleteAll()
+    {
+      DBHandler.DeleteAll(Table);
+    }
     public static Object MakeObject(SqlDataReader rdr)
     {
       return new Store(rdr.GetString(1), rdr.GetInt32(0));
