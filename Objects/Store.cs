@@ -41,7 +41,11 @@ namespace BrandingNS.Objects
         DBHandler.Delete(Table, GetId());
       }
     }
-    
+  
+    public void AddBrand(int brandId)
+    {
+      base.Save(StoreBrand.Table, StoreBrand.Columns, StoreBrand.MakeParameters(GetId(), brandId));
+    }    
     public static Store Find(int id)
     {
       return (Store) DBHandler.GetObjectFromDB(Table, "WHERE id = @id", MakeObject, new SqlParameter("@id", id));
