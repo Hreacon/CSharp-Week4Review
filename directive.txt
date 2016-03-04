@@ -37,3 +37,14 @@ Read stores its associated with
 
 StoreBrand:
 Deletes relationship rows
+
+Routes:
+/ - display list of stores and brands
+/store/id/ - display a single store. List Brands. Link to add a brand.
+/store/id/brands/ - list all brands not already in store. Click on one to add to store.
+/store/id/addBrand/id/ - add a brand to a store. Show /store/id/
+/brand/id/ - display a single brand. List stores associated. Link to add a store.
+/brand/id/stores/ - list stores not carrying the current brand.
+/brand/id/addStore/id/ - add a brand to a store. Show /brand/id/
+/store/add/ - add a store to the database. Show /
+/brand/add/ - add a brand to the database. Show / 
