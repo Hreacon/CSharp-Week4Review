@@ -24,5 +24,10 @@ namespace BrandingNS
       Store test = new Store("Name");
       Assert.Equal("Name", test.GetName());
     }
+    [Fact]
+    public void StoreGetsAllFromDatabaseAndIsEmpty()
+    {
+      Assert.Equal(0,Store.GetAll().Count);
+    }
   }
 }
