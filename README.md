@@ -1,40 +1,36 @@
-# _{Application Name}_
+# Shoe Store
 
-#### _{Brief description of application}, {Date of current version}_
+#### Demonstrates many to many relationships using Shoe Stores and shoe brands. March 9th, 2016
 
-#### By Nicholas Jensen-Hay and PAIR
+#### By Nicholas Jensen-Hay
 
 ## Description
 
-_{This is a detailed description of your application. Its purpose and usage.  Give as much detail as needed to explain what the application does, and any other information you want users or other developers to have. }_
+Lets the user add Shoe stores, shoe brands, and relationships between the two.
 
 ## Setup/Installation Requirements
 
+Please see Epicodus's great guide on installing the required software,
+https://www.learnhowtoprogram.com/c/getting-started-with-c/installing-c
+
 ### SQL
-create database shoe_stores
-create database shoe_stores_test
-go
-use shoe_stores
-create table stores(id int identity(1,1), name varchar(255))
-create table brands(id int identity(1,1), name varchar(255))
-create table store_brand(id int identity(1,1), store_id int, brand_id int)
-use shoe_stores_test
-create table stores(id int identity(1,1), name varchar(255))
-create table brands(id int identity(1,1), name varchar(255))
-create table store_brand(id int identity(1,1), store_id int, brand_id int)
-go
+* create database shoe_stores
+* create database shoe_stores_test
+* go
+* use shoe_stores
+* create table stores(id int identity(1,1), name varchar(255))
+* create table brands(id int identity(1,1), name varchar(255))
+* create table brand_store(id int identity(1,1), store_id int, brand_id int)
+* use shoe_stores_test
+* create table stores(id int identity(1,1), name varchar(255))
+* create table brands(id int identity(1,1), name varchar(255))
+* create table brand_store(id int identity(1,1), store_id int, brand_id int)
+* go
 
-* _This is a great place_
-* _to list setup instructions_
-* _in a simple_
-* _easy-to-understand_
-* _format_
-
-_{Leave nothing to chance! You want it to be easy for potential users, employers and collaborators to run your app. Do I need to run a server? How should I set up my databases? Is there other code this app depends on?}_
 
 ## Known Bugs
 
-_{Are there issues that have not yet been resolved that you want to let users know you know?  Outline any issues that would impact use of your application.  Share any workarounds that are in place. }_
+No known issues. Please report any found through github and the contact information below.
 
 ## Support and contact details
 
@@ -42,11 +38,11 @@ Contact Nicholas Jensen-Hay through Github at http://github.com/hreacon/
 
 ## Technologies Used
 
-_{Tell me about the languages and tools you used to create this app. Assume that I know you probably used HTML and CSS. If you did something really cool using only HTML, point that out.}_
+C#, Nancy, Razor, MsSQL
 
 ### License
 
-Copyright (c) 2016 Nicholas Jensen-Hay and PAIR
+Copyright (c) 2016 Nicholas Jensen-Hay
 
 MIT License
 
