@@ -6,7 +6,7 @@ namespace BrandingNS.Objects
 {
   public class StoreBrand : DBHandler
   {
-    public static string Table = "store_brand";
+    public static string Table = "brand_store";
     public static string StoreIdColumn = "store_id";
     public static string BrandIdColumn = "brand_id";
     public static List<string> Columns = new List<string> { StoreIdColumn, BrandIdColumn };
