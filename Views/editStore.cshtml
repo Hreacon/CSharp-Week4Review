@@ -1,0 +1,13 @@
+@Html.Partial("header.cshtml")
+
+<div class="stores">
+  <h4>Store Info:</h4>
+  <form class="" action="/store/save" method="post">
+    <input type="hidden" name="id" value="@Model.GetId()">
+    <label for="storeName">Store Name:</label><input type="text" name="storeName" value="@Model.GetName()">
+    <input type="submit" name="submit" value="Add Store">
+  </form>
+</div>
+
+<a href="/store/@Model.GetId()" class="link">Discard Changes</a>
+<a href="/" class="link">Return Home</a> 

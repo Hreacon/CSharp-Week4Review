@@ -19,6 +19,12 @@ namespace BrandingNS
       Get["/brand/{bid}/"] = x => {
         return View["viewBrand.cshtml", Brand.Find(int.Parse(x.bid))];
       };
+      Get["/store/{sid}/edit"] = x => {
+        return View["editStore.cshtml", Store.Find(int.Parse(x.sid))];
+      };
+      Get["/brand/{bid}/edit"] = x => {
+        return View["editBrand.cshtml", Brand.Find(int.Parse(x.bid))];
+      };
       Get["/store/{sid}/brands/"] = x => {
         Dictionary<string, object> model = new Dictionary<string, object>{};
         Store store = Store.Find(int.Parse(x.sid));
@@ -60,6 +66,22 @@ namespace BrandingNS
         string name = Request.Form["brandName"];
         new Brand(name).Save();
         return View["forward.cshtml", "/"];
+      };
+      Post["/store/save/"] = _ => {
+        int id = int.Parse(Request.Form["id"]);
+        string name = Request.Form["storeName"];
+        Store store = Store.Find(id);
+        store.SetName(name);
+        store.Save();
+        return View["forward.cshtml", "/store/"+store.GetId()];
+      };
+      Post["/brand/save/"] = _ => {
+        int id = int.Parse(Request.Form["id"]);
+        string name = Request.Form["brandName"];
+        Brand brand = Brand.Find(id);
+        brand.SetName(name);
+        brand.Save();
+        return View["forward.cshtml", "/brand/"+brand.GetId()];
       };
     }
   }

@@ -1,0 +1,13 @@
+@Html.Partial("header.cshtml")
+
+<div class="brands">
+  <h4>Brand Info:</h4>
+  <form class="" action="/brand/save" method="post">
+    <input type="hidden" name="id" value="@Model.GetId()">
+    <label for="brandName">Brand Name:</label><input type="text" name="brandName" value="@Model.GetName()">
+    <input type="submit" name="submit" value="Add Brand">
+  </form>
+</div>
+
+<a href="/brand/@Model.GetId()" class="link">Discard Changes</a>
+<a href="/" class="link">Return Home</a>
