@@ -19,6 +19,14 @@ namespace BrandingNS
       Get["/brand/{bid}/"] = x => {
         return View["viewBrand.cshtml", Brand.Find(int.Parse(x.bid))];
       };
+      Get["/store/{sid}/delete"] = x => {
+        Store.Find(int.Parse(x.sid)).Delete();
+        return View["forward.cshtml", "/"];
+      };
+      Get["/brand/{bid}/delete"] = x => {
+        Brand.Find(int.Parse(x.bid)).Delete();
+        return View["forward.cshtml", "/"];
+      };
       Get["/store/{sid}/edit"] = x => {
         return View["editStore.cshtml", Store.Find(int.Parse(x.sid))];
       };
